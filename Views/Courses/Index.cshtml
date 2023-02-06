@@ -1,26 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elenco dei corsi</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li>Pagina1</li>
-                <li>Pagina2</li>
-                <li>Pagina3</li>
-                <li>Pagina4</li>
-                <li>Pagina5</li>
-            </ul>
-        </nav>
-    </header>
-    <h1>Sono la view per l'action index del CoursesController</h1>
-    <footer>
-        <p>Contattaci al numero ...</p>
-    </footer>
-</body>
-</html>
+@{
+    ViewData["Title"] = "Catalogo corsi";
+}
+<h1 class="display-4">Catalogo corsi</h1>
+
+@for(int i=1; i<=10; i++)
+{
+<div>
+    
+    <div class="row">
+        <div class="col-md-1">
+            <img src="~/logo.svg" width="50" />
+        </div>
+        <div class="col-md-5">
+            <h2>Titolo del corso</h2>
+            <author>nome autore</author>
+        </div>
+        <div class="col-md-2">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="col-md-2">
+            EUR 10.99 <br /><s>EUR 12.99</s>
+        </div>
+        <div class="col-md-2">
+                <a class="btn btn-outline-primary" asp-area="" asp-controller="Courses" asp-action="Detail">Dettaglio corso</a>       
+        </div>
+    </div>
+</div>
+}
