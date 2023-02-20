@@ -1,26 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dettaglio del corso </title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li>Pagina1</li>
-                <li>Pagina2</li>
-                <li>Pagina3</li>
-                <li>Pagina4</li>
-                <li>Pagina5</li>
-            </ul>
-        </nav>
-    </header>
-    <h1>Sono la view per l'action detail del CoursesController</h1>
-    <footer>
-        <p>Contattaci al numero</p>
-    </footer>
-</body>
-</html>
+@model CourseDetailViewModel
+<section class="course-info">
+    <div class="row">
+        <div class="col-md-9">
+            <h1>@Model.Title</h1>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <a class="btn btn-warning btn-lg btn-block subscribe-course" asp-action="Pay" asp-route-id="@Model.Id">Iscriviti</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9" html-sanitize>
+            @Model.Description
+        </div>
+        <div class="col-md-3">
+            <aside>
+                <author>di @Model.Author</author>
+                <div class="rating" title="@Model.Rating">
+                    <rating value="@Model.Rating"></rating>
+                </div>
+                <div class="price">
+                    <price current-price="@Model.CurrentPrice" full-price="@Model.FullPrice"></price>
+                </div>
+                <img src="@Model.ImagePath" class="img-fluid course-image" alt="@Model.Title" asp-append-version="true">
+                <a asp-page="/Contact" asp-route-id="@Model.Id" class="btn btn-block btn-outline-secondary mt-3">Fai una domanda</a>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<section class="course-lessons">
+	<h2>Lezioni (@Model.Lessons.Count)</h2>
+	@foreach (var lesson in Model.Lessons)
+	{
+	<hr>
+	<div class="row">
+		<div class="col-md-9 d-flex align-items-center">
+            <a>@lesson.Title</a>
+		</div>
+		<div class="col-md-3 d-flex align-items-center justify-content-end lesson-duration">
+			<i class="far fa-clock"></i><time>@lesson.Duration.ToString("m'm 's's'")</time>
+		</div>
+	</div>
+	}
+    <hr>
+    <div class="row course-duration">
+		<div class="col-md-9 d-flex align-items-center">
+            Totale
+        </div>
+        <div class="col-md-3 d-flex align-items-center justify-content-end">
+            <i class="far fa-clock"></i><time>@Model.TotalCourseDuration.ToString("h'h 'm'm 's's'")</time>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="voteModal" tabindex="-1" aria-labelledby="voteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="voteModalLabel">Il tuo voto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <iframe width="100%" height="100" frameBorder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
