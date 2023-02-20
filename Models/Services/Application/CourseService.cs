@@ -2,10 +2,8 @@ using Corsi.Models.ViewModels;
 
 namespace Corsi.Models.Services.Application
 {
-    public class CourseService
+    public class CourseService : ICourseService
     {
-        //Cosa fare
-
         public List<CourseViewModel> GetCourses()
         {
             return new List<CourseViewModel>(){
@@ -24,7 +22,7 @@ namespace Corsi.Models.Services.Application
         {
             var course = new CourseDetailViewModel{
                 Id = id,
-                Title = $"Cordo {id}",
+                Title = $"Corso {id}",
                 CurrentPrice = "8",
                 FullPrice = "10",
                 Author = "Autore",
