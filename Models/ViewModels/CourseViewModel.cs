@@ -19,6 +19,7 @@ namespace Corsi.Models.ViewModels
             //Id, Title, ImagePath, Author, Rating, FullPrice_Amount, CurrentPrice_Amount
 
             var courseViewModel = new CourseViewModel{
+                Id = Convert.ToInt32(courseRow["Id"]),
                 Title = Convert.ToString(courseRow["Title"]),
                 ImagePath = Convert.ToString(courseRow["ImagePath"]),
                 Author = Convert.ToString(courseRow["Author"]),

@@ -19,11 +19,13 @@ namespace Corsi.Models.Services.Infrastructure
                     using(var reader = cmd.ExecuteReader())
                     {
                         var dataSet = new DataSet();
-                        var dataTable = new DataTable();
+                        do
+                        {
+                            var dataTable = new DataTable();                
+                            dataSet.Tables.Add(dataTable);
+                            dataTable.Load(reader);
+                        }while(!reader.IsClosed);
                         
-                        dataSet.Tables.Add(dataTable);
-                        dataTable.Load(reader);
-
                         return dataSet;
                     }
                 }
