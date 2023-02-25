@@ -1,4 +1,6 @@
 using Corsi.Models.Services.Application;
+using Corsi.Models.Services.Infrastracture;
+using Corsi.Models.Services.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +10,8 @@ builder.Services.AddControllersWithViews();
 // Crea nuova istanzia del servizio ogni volta che un componente
 // ne ha bisogno. Una volta usata la distrugge (garbage collector).
 // Uso quando ho interfaccia semplice no grande logica
-builder.Services.AddTransient<ICourseService, CourseService>();
+builder.Services.AddTransient<ICourseService, AdoNetCourseService>();
+builder.Services.AddTransient<IDatabaseAccess, SqliteDatabaseAccess>();
 
 // Crea nuova istanzia del servizio ogni volta che un componente
 // ne ha bisogno. L'istanza può essere riusata all'interno della
