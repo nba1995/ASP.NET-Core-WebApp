@@ -28,8 +28,12 @@ namespace Corsi.Models.Services.Application
 
         public CourseDetailViewModel GetCourse(int id)
         {
-            string query = $"SELECT Id, Title, Description, ImagePath, Author, Rating, FullPrice_Amount, CurrentPrice_Amount FROM Courses WHERE Id={id}; SELECT Id, Title, Description, Duration FROM Lessons WHERE CourseId={id}";
-
+            //string sqlInjectionID = "5; DROP TABLE Courses";
+            
+            FormattableString query = $@"SELECT Id, Title, Description, ImagePath, Author, Rating, FullPrice_Amount, CurrentPrice_Amount 
+                            FROM Courses WHERE Id={id}; 
+                            SELECT Id, Title, Description, Duration FROM Lessons WHERE CourseId={id}";
+            
             DataSet dataSet = Db.Query(query);
 
             //Course
@@ -52,7 +56,7 @@ namespace Corsi.Models.Services.Application
 
         public List<CourseViewModel> GetCourses()
         {
-            string query = "SELECT Id, Title, ImagePath, Author, Rating, FullPrice_Amount, CurrentPrice_Amount  FROM Courses";
+            FormattableString query = $"SELECT Id, Title, ImagePath, Author, Rating, FullPrice_Amount, CurrentPrice_Amount  FROM Courses";
             DataSet dataSet = Db.Query(query);
 
             List<CourseViewModel> listCourseViewmModel = new List<CourseViewModel>();
