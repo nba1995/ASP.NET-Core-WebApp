@@ -11,17 +11,17 @@ namespace Corsi.Controllers
         {
             this.courseService = courseService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewData["Title"] = "Elenco corsi";
-            List<CourseViewModel> courses = courseService.GetCourses();
+            List<CourseViewModel> courses = await courseService.GetCoursesAsync();
             return View(courses);
         }
 
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
             ViewData["Title"] = "Dettaglio corso " + id.ToString();
-            CourseDetailViewModel courseDetail = courseService.GetCourse(id);
+            CourseDetailViewModel courseDetail = await courseService.GetCourseAsync(id);
             return View(courseDetail);
         }
     }

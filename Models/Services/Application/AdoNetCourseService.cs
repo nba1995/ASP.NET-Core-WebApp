@@ -26,15 +26,15 @@ namespace Corsi.Models.Services.Application
 
         public IDatabaseAccess Db { get; }
 
-        public CourseDetailViewModel GetCourse(int id)
+        public async Task<CourseDetailViewModel> GetCourseAsync(int id)
         {
             //string sqlInjectionID = "5; DROP TABLE Courses";
-            
+
             FormattableString query = $@"SELECT Id, Title, Description, ImagePath, Author, Rating, FullPrice_Amount, CurrentPrice_Amount 
                             FROM Courses WHERE Id={id}; 
                             SELECT Id, Title, Description, Duration FROM Lessons WHERE CourseId={id}";
             
-            DataSet dataSet = Db.Query(query);
+            DataSet dataSet = await Db.QueryAsync(query);
 
             //Course
             var courseTable = dataSet.Tables[0];
@@ -54,10 +54,10 @@ namespace Corsi.Models.Services.Application
             return courseDetailViewModel; 
         }
 
-        public List<CourseViewModel> GetCourses()
+        public async Task<List<CourseViewModel>> GetCoursesAsync()
         {
             FormattableString query = $"SELECT Id, Title, ImagePath, Author, Rating, FullPrice_Amount, CurrentPrice_Amount  FROM Courses";
-            DataSet dataSet = Db.Query(query);
+            DataSet dataSet = await Db.QueryAsync(query);
 
             List<CourseViewModel> listCourseViewmModel = new List<CourseViewModel>();
             var dataTable = dataSet.Tables[0];

@@ -4,45 +4,14 @@ namespace Corsi.Models.Services.Application
 {
     public class CourseService : ICourseService
     {
-        public List<CourseViewModel> GetCourses()
+        public Task<List<CourseViewModel>> GetCoursesAsync()
         {
-            return new List<CourseViewModel>(){
-                new CourseViewModel(){
-                    Id = 1,
-                    Title = "Titolo 1",
-                    Author = "Autore 1",
-                    FullPrice = "12",
-                    CurrentPrice = "8",
-                    Rating = 2
-                }
-            };
+            throw new NotImplementedException();
         }
 
-        public CourseDetailViewModel GetCourse(int id)
+        public Task<CourseDetailViewModel> GetCourseAsync(int id)
         {
-            var course = new CourseDetailViewModel{
-                Id = id,
-                Title = $"Corso {id}",
-                CurrentPrice = "8",
-                FullPrice = "10",
-                Author = "Autore",
-                Rating = 3.7,
-                ImagePath = "/logo.svg",
-                Description = $"Descrizione {id}",
-                Lessons = new List<LessonViewModel>()
-            };
-
-            for(int i = 1; i<=5;i++)
-            {
-                var lesson = new LessonViewModel{
-                    Title = $"Lezione {i}",
-                    Duration = TimeSpan.FromSeconds(new Random().Next(40,90))
-                };
-                
-                course.Lessons.Add(lesson);
-            }
-
-            return course;
+            throw new NotImplementedException();
         }
     }
 }

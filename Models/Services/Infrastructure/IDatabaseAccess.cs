@@ -4,6 +4,6 @@ namespace Corsi.Models.Services.Infrastracture
 {
     public interface IDatabaseAccess
     {
-        DataSet Query(FormattableString query);
+        Task<DataSet> QueryAsync(FormattableString formattableQuery);   
     }
 }

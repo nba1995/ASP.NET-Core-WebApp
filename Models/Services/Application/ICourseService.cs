@@ -6,8 +6,8 @@ namespace Corsi.Models.Services.Application
     //Qui definisco i metodi che poi implemento nel controller
     public interface ICourseService
     {
-         List<CourseViewModel> GetCourses();
+         Task<List<CourseViewModel>> GetCoursesAsync();
 
-         CourseDetailViewModel GetCourse(int id);
+         Task<CourseDetailViewModel> GetCourseAsync(int id);
     }
 }
