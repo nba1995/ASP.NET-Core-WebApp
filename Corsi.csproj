@@ -7,7 +7,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!--
+    // Perchè ADO net?
+    // Tecnologia basata su provider (scaricabile da nuget)
+    // Posso connettermi a n database cambiando il provider
+        // SQLite       - dotnet add package Microsoft.Data.SQLite
+        // SQL Server   - dotnet add package System.Data.SqlClient
+        // MySql        - dotnet add package MySqlConnector
+        // Oracle       - dotnet add package Oracle.ManageDataAccess.Core
+        // PostgreSQL   - dotnet add package Npgsql
+    -->
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.3" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    
+    <!--
+    // EntityFrameworkCore
+        // SQLite       - dotnet add package Microsoft.EntityFrameworkCore.SQLite
+        // SQL Server   - dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+        // MySql        - dotnet add package Pomelo.EntityFrameworkCore.MySql
+        // Oracle       - dotnet add package Devart.Data.Oracle.EFCore
+        // PostgreSQL   - dotnet add package Devart.Data.PostgreSql.EFCore
+    -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.3" />
 
+    <!-- 
+      //From DB, EF creates automatically the DbContext 
+      install dotnet-ef and design: https://learn.microsoft.com/en-gb/ef/core/get-started/overview/first-app?tabs=netcore-cli
+      Execute command to create entities and dbcntext
+    -->
+  </ItemGroup>
 </Project>

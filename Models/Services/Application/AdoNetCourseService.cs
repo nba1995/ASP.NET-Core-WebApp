@@ -4,15 +4,6 @@ using Corsi.Models.ViewModels;
 
 namespace Corsi.Models.Services.Application
 {
-    // Perchè ADO net?
-    // Tecnologia basata su provider (scaricabile da nuget)
-    // Posso connettermi a n database cambiando il provider
-        // SQLite       - dotnet add package Microsoft.Data.SQLite
-        // SQL Server   - dotnet add package System.Data.SqlClient
-        // MySql        - dotnet add package MySqlConnector
-        // Oracle       - dotnet add package Oracle.ManageDataAccess.Core
-        // PostgreSQL   - dotnet add package Npgsql
-
     // Servizio applicativo - Deve sapere COSA estrarre
     // Ad esempio quali corsi, quanti corsi
     public class AdoNetCourseService : ICourseService
